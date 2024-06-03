@@ -6,6 +6,7 @@
 <title>Responsive Rive Animation</title>
 <style>
 body, html {
+
     margin: 0;
     font-size: 0px;
     font-family: Arial, sans-serif;
@@ -26,23 +27,18 @@ canvas {
 <body>
 <canvas id="riveCanvas"></canvas>
 <div id="widthDisplay"></div>
-<div id="heightDisplay"></div>
 <script>
-    let riveInstance, widthNumInput, heightNumInput;
+    let riveInstance, widthNumInput;
 
-    function updateDimensions() {
+    function updateWidth() {
         const browserWidth = window.innerWidth;
-        const browserHeight = window.innerHeight;
         document.getElementById('widthDisplay').innerText = browserWidth + ' px';
-        document.getElementById('heightDisplay').innerText = browserHeight + ' px';
         
         if (widthNumInput) {
-            widthNumInput.value = browserWidth;
-        }
-        if (heightNumInput) {
-            heightNumInput.value = browserHeight;
+            widthNumInput.value = browserWidth;  
         }
     }
+
 
     riveInstance = new rive.Rive({
         src: 'hello_there_8.riv', // Ensure this file name is correct
@@ -53,12 +49,11 @@ canvas {
         onLoad: () => {
             const inputs = riveInstance.stateMachineInputs('State Machine 1'); //Ensure this state machine name is correct
             widthNumInput = inputs.find(i => i.name === 'width'); //Ensure this input name is correct
-            heightNumInput = inputs.find(i => i.name === 'height'); //Ensure this input name is correct
             riveInstance.resizeDrawingSurfaceToCanvas();
             
-            window.onresize = updateDimensions;
+            window.onresize = updateWidth;
 
-            updateDimensions();
+            updateWidth();
         }
     });
 </script>
