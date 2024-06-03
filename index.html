@@ -17,8 +17,8 @@ body, html {
     align-items: center;
 }
 canvas {
-    width: 3000px; /* Set canvas width */
-    height: 1165px; /* Set canvas height */
+    width: 1440px; /* Set canvas width */
+    height: 1723px; /* Set canvas height */
     margin: 0 auto; /* Center the canvas horizontally */
 } 
 </style>
@@ -40,14 +40,14 @@ canvas {
     }
 
     riveInstance = new rive.Rive({
-        src: 'hello_there_5.riv', // Ensure this file name is correct
+        src: 'hello_there_6.riv', // Ensure this file name is correct
         canvas: document.getElementById('riveCanvas'),
         autoplay: true,
-        artboard: 'New Artboard', //Ensure this artboard name is correct
+        artboard: 'website', //Ensure this artboard name is correct
         stateMachines: 'State Machine 1', //Ensure this state machine name is correct
         onLoad: () => {
             const inputs = riveInstance.stateMachineInputs('State Machine 1'); //Ensure this state machine name is correct
-            widthNumInput = inputs.find(i => i.name === 'Number 1'); //Ensure this input name is correct
+            widthNumInput = inputs.find(i => i.name === 'width'); //Ensure this input name is correct
             riveInstance.resizeDrawingSurfaceToCanvas();
             
             window.onresize = updateWidth;
